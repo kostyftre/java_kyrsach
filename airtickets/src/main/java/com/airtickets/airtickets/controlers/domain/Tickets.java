@@ -12,14 +12,25 @@ public class Tickets {
 
     private String text;
     private String tag;
+    private String country;
+
 
     public Tickets() {
 
     }
 
-    public Tickets(String text, String tag) {
+    public Tickets(String text, String tag, String country) {
         this.text = text;
         this.tag = tag;
+        this.country = country;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 

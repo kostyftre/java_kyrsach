@@ -29,8 +29,9 @@ public class SellerController {
 
 
     @PostMapping("/tickets")
-    public String add(@RequestParam String text,@RequestParam String tag, Map<String, Object> model){
-      Tickets ticket = new Tickets(text, tag);
+    public String add(@RequestParam String text,@RequestParam String tag,@RequestParam String country, Map<String, Object> model){
+      Tickets ticket = new Tickets(text, tag, country);
+
       sellerRepo.save(ticket);
 
       Iterable<Tickets> tickets = sellerRepo.findAll();
@@ -40,20 +41,6 @@ public class SellerController {
       return "ticketSeller";
     }
 
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model) {
-        Iterable<Tickets> tickets;
-
-        if (filter != null && !filter.isEmpty()) {
-            tickets = sellerRepo.findByTag(filter);
-        } else {
-            tickets = sellerRepo.findAll();
-        }
-
-        model.put("tickets", tickets);
-
-        return "ticketSeller";
-    }
 
 
 
